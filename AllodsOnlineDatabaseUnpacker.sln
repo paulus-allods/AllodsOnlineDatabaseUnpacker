@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllodsOnlineDatabaseUnpacker", "AllodsOnlineDatabaseUnpacker\AllodsOnlineDatabaseUnpacker.csproj", "{A7AF3C96-EF63-4260-B6AB-CFBB7B0062DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{5D7A96E2-2678-4625-B827-31F0B9805904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7AF3C96-EF63-4260-B6AB-CFBB7B0062DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7AF3C96-EF63-4260-B6AB-CFBB7B0062DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7AF3C96-EF63-4260-B6AB-CFBB7B0062DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7AF3C96-EF63-4260-B6AB-CFBB7B0062DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7A96E2-2678-4625-B827-31F0B9805904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7A96E2-2678-4625-B827-31F0B9805904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7A96E2-2678-4625-B827-31F0B9805904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7A96E2-2678-4625-B827-31F0B9805904}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
