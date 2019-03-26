@@ -17,7 +17,7 @@ namespace Database.Serialization.Memory
 
         public override void DeserializeField(FieldInfo field, IntPtr memoryAddress, object obj)
         {
-            Logger.Debug($"Deserializing {field.Name} at {memoryAddress.ToString("x8")}");
+            Logger.Debug($"Deserializing {field.Name} at {(memoryAddress + Offset).ToString("x8")}");
             var startMemoryAddress = Marshal.ReadIntPtr(memoryAddress + Offset);
             var endMemoryAddress = Marshal.ReadIntPtr(memoryAddress + Offset + 4);
             var count = (endMemoryAddress.ToInt32() - startMemoryAddress.ToInt32()) / _itemSize;
@@ -28,7 +28,7 @@ namespace Database.Serialization.Memory
                 for (var i = 0; i < count; i++)
                 {
                     var entry = (IMemoryDeserializable) Activator.CreateInstance(elementType);
-                    entry.Deserialize(startMemoryAddress + i * _itemSize + 4);
+                    entry.Deserialize(startMemoryAddress + i * _itemSize);
                     array.SetValue(entry, i);
                 }
 

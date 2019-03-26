@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,15 +21,17 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32bit>true</Prefer32bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32bit>true</Prefer32bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JetBrains.Annotations, Version=2018.3.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
@@ -69,12 +71,20 @@
     <Compile Include="EditorDatabase.cs" />
     <Compile Include="GameDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\Enum\Animation.cs" />
     <Compile Include="Resource\Enum\Bone.cs" />
     <Compile Include="Resource\Enum\CreatureKind.cs" />
+    <Compile Include="Resource\Enum\ModelMorphControl.cs" />
     <Compile Include="Resource\Implementation\AmbientCoefficients.cs" />
     <Compile Include="Resource\Implementation\AnimationController.cs" />
     <Compile Include="Resource\Implementation\AnimationProperties.cs" />
+    <Compile Include="Resource\Implementation\CharacterVariation.cs" />
+    <Compile Include="Resource\Implementation\CharacterVariations.cs" />
+    <Compile Include="Resource\Implementation\ControlValue.cs" />
+    <Compile Include="Resource\Implementation\ModelMorphPreset.cs" />
     <Compile Include="Resource\Implementation\SkeletonPart.cs" />
+    <Compile Include="Resource\Implementation\SpecialShuffleParams.cs" />
+    <Compile Include="Resource\Implementation\TargetTrackingParams.cs" />
     <Compile Include="Resource\Resource.cs" />
     <Compile Include="Serialization\Memory\IMemoryDeserializable.cs" />
     <Compile Include="Serialization\Memory\MemoryArrayOffsetAttribute.cs" />
@@ -82,6 +92,7 @@
     <Compile Include="Serialization\XDB\IXdbSerializable.cs" />
     <Compile Include="Serialization\XDB\XdbArrayAttribute.cs" />
     <Compile Include="Serialization\XDB\XdbElementAttribute.cs" />
+    <Compile Include="Serialization\XDB\XdbEnumArrayAttribute.cs" />
     <Compile Include="Serialization\XDB\XdbEnumAttribute.cs" />
     <Compile Include="Wrapper.cs" />
   </ItemGroup>

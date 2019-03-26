@@ -9,7 +9,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(26)] [XdbElement] public Bool AnimationFeedBack;
         [MemoryOffset(25)] [XdbElement] public Bool DefaultFlag;
 
-        [MemoryArrayOffset(28, 20)] [XdbArray("SkeletonParts")]
+        [MemoryArrayOffset(28, 24)] [XdbArray("SkeletonParts")]
         public SkeletonPart[] SkeletonParts;
 
         [MemoryOffset(24)] [XdbElement] public Bool UseMaterialAnimation;

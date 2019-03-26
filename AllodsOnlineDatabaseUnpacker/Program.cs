@@ -1,5 +1,6 @@
 ﻿using System;
 using Database;
+using Database.Resource.Implementation;
 using NLog;
 
 namespace AllodsOnlineDatabaseUnpacker
@@ -15,7 +16,13 @@ namespace AllodsOnlineDatabaseUnpacker
             EditorDatabase.Populate();
             GameDatabase.InitDataSystem(Paths.DataDir, "");
             GameDatabase.Populate(EditorDatabase.GetObjectList());
+            var ptr = GameDatabase.GetObjectPtr(
+                "Characters/Hadagan_female/Variations/HadaganFemaleVariations.(CharacterVariations).xdb");
+            Logger.Debug(ptr.ToString("x8"));
+            var ap = new CharacterVariations();
+            ap.Deserialize(ptr);
             Console.ReadKey();
+            Logger.Info(ap.Serialize("test"));
         }
     }
 }

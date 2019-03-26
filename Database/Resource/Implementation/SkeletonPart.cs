@@ -6,8 +6,8 @@ namespace Database.Resource.Implementation
 {
     public class SkeletonPart : Resource
     {
-        [MemoryOffset(16)] [XdbElement] public Bool EnableFlag;
-        [MemoryOffset(4)] [XdbElement] public AsciiString RootBone;
-        [MemoryOffset(0)] [XdbElement] public Bool RootFlag;
+        [MemoryOffset(20)] [XdbElement] public Bool EnableFlag;
+        [MemoryOffset(8)] [XdbElement] public AsciiString RootBone;
+        [MemoryOffset(4)] [XdbElement] public Bool RootFlag;
     }
 }
