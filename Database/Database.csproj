@@ -84,10 +84,12 @@
     <Compile Include="Resource\Implementation\AnimationController.cs" />
     <Compile Include="Resource\Implementation\AnimationProperties.cs" />
     <Compile Include="Resource\Implementation\Blob.cs" />
+    <Compile Include="Resource\Implementation\BoneTransform.cs" />
     <Compile Include="Resource\Implementation\CharacterVariation.cs" />
     <Compile Include="Resource\Implementation\CharacterVariations.cs" />
     <Compile Include="Resource\Implementation\Collision.cs" />
     <Compile Include="Resource\Implementation\CollisionMesh.cs" />
+    <Compile Include="Resource\Implementation\Control.cs" />
     <Compile Include="Resource\Implementation\ControlValue.cs" />
     <Compile Include="Resource\Implementation\Edge.cs" />
     <Compile Include="Resource\Implementation\FlareInfo.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Resource\Implementation\MaterialParams.cs" />
     <Compile Include="Resource\Implementation\ModelElement.cs" />
     <Compile Include="Resource\Implementation\ModelMorphPreset.cs" />
+    <Compile Include="Resource\Implementation\ModelMorphSettings.cs" />
     <Compile Include="Resource\Implementation\ModelPart.cs" />
     <Compile Include="Resource\Implementation\NamedJoint.cs" />
     <Compile Include="Resource\Implementation\NamedNode.cs" />
