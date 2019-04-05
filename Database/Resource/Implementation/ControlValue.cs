@@ -5,11 +5,11 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class ControlValue
+    public class ControlValue : Resource
     {
-        [MemoryOffset(8)] [XdbEnum(typeof(ModelMorphControl))]
+        [MemoryOffset(12)] [XdbEnum(typeof(ModelMorphControl))]
         public Int ControlName;
 
-        [MemoryOffset(4)] [XdbElement] public Float Value;
+        [MemoryOffset(8)] [XdbElement] public Float Value;
     }
 }
