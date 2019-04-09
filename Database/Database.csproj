@@ -109,6 +109,7 @@
     <Compile Include="Resource\Implementation\OccluderInfo.cs" />
     <Compile Include="Resource\Implementation\ParticleAnimation.cs" />
     <Compile Include="Resource\Implementation\ParticleEmitter.cs" />
+    <Compile Include="Resource\Implementation\SkeletalAnimation.cs" />
     <Compile Include="Resource\Implementation\SkeletonPart.cs" />
     <Compile Include="Resource\Implementation\SpecialShuffleParams.cs" />
     <Compile Include="Resource\Implementation\TargetTrackingParams.cs" />
