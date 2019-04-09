@@ -107,11 +107,14 @@
     <Compile Include="Resource\Implementation\NamedJoint.cs" />
     <Compile Include="Resource\Implementation\NamedNode.cs" />
     <Compile Include="Resource\Implementation\OccluderInfo.cs" />
+    <Compile Include="Resource\Implementation\ParticleAnimation.cs" />
+    <Compile Include="Resource\Implementation\ParticleEmitter.cs" />
     <Compile Include="Resource\Implementation\SkeletonPart.cs" />
     <Compile Include="Resource\Implementation\SpecialShuffleParams.cs" />
     <Compile Include="Resource\Implementation\TargetTrackingParams.cs" />
     <Compile Include="Resource\Implementation\VertexComponent.cs" />
     <Compile Include="Resource\Implementation\VertexDeclaration.cs" />
+    <Compile Include="Resource\Implementation\VisibilityInterval.cs" />
     <Compile Include="Resource\Resource.cs" />
     <Compile Include="Serialization\Memory\IMemoryDeserializable.cs" />
     <Compile Include="Serialization\Memory\MemoryArrayOffsetAttribute.cs" />
