@@ -20,12 +20,15 @@ namespace Database.Serialization.XDB
         {
             var fieldName = field.Name;
             fieldName = char.ToLowerInvariant(fieldName[0]) + fieldName.Substring(1);
-            var root = new XElement(Name ?? field.Name);
+            var root = new XElement(Name ?? fieldName);
             if (!(field.GetValue(obj) is Int[] fieldArray))
                 throw new Exception("Cannot cast non int array to enum array");
             foreach (var fieldEntry in fieldArray)
             {
-                var asciiString = new AsciiString(Enum.GetName(_enumType, (int) fieldEntry));
+                var enumValue = Enum.GetName(_enumType, (int) fieldEntry);
+                var asciiString = new AsciiString(enumValue);
+                Logger.Debug(
+                    $"Enum value for {fieldName} of {obj.GetType()}: {enumValue} (Type:{_enumType},Ordinal:{(int) fieldEntry}");
                 root.Add(asciiString.Serialize(_itemName));
             }
 
