@@ -147,7 +147,9 @@
     <Compile Include="Resource\Implementation\WidgetPlacement.cs" />
     <Compile Include="Resource\Implementation\WidgetPlacementXy.cs" />
     <Compile Include="Resource\Implementation\WidgetTextStyle.cs" />
+    <Compile Include="Resource\Implementation\WidgetTextTaggedValue.cs" />
     <Compile Include="Resource\Implementation\WidgetTextureTiledLayout.cs" />
+    <Compile Include="Resource\Implementation\WidgetTextView.cs" />
     <Compile Include="Resource\Resource.cs" />
     <Compile Include="Serialization\Memory\IMemoryDeserializable.cs" />
     <Compile Include="Serialization\Memory\MemoryArrayOffsetAttribute.cs" />
