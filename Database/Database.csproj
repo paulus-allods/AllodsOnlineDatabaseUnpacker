@@ -143,6 +143,7 @@
     <Compile Include="Resource\Implementation\WidgetLayer.cs" />
     <Compile Include="Resource\Implementation\WidgetLayerSimpleTexture.cs" />
     <Compile Include="Resource\Implementation\WidgetLayerTiledTexture.cs" />
+    <Compile Include="Resource\Implementation\WidgetPanel.cs" />
     <Compile Include="Resource\Implementation\WidgetPlacement.cs" />
     <Compile Include="Resource\Implementation\WidgetPlacementXy.cs" />
     <Compile Include="Resource\Implementation\WidgetTextStyle.cs" />
