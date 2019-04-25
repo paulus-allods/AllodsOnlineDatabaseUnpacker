@@ -124,6 +124,7 @@
     <Compile Include="Resource\Implementation\TextureAtlas.cs" />
     <Compile Include="Resource\Implementation\TexturePatch.cs" />
     <Compile Include="Resource\Implementation\TextureRect.cs" />
+    <Compile Include="Resource\Implementation\TextureSingleElement.cs" />
     <Compile Include="Resource\Implementation\UiSingleTexture.cs" />
     <Compile Include="Resource\Implementation\UiTexture.cs" />
     <Compile Include="Resource\Implementation\UiTextureElement.cs" />
