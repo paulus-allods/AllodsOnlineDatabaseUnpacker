@@ -4,7 +4,7 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class CollisionMesh
+    public class CollisionMesh : Resource
     {
         [MemoryOffset(72)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(60)] [XdbElement] public AsciiString BinaryFile;
