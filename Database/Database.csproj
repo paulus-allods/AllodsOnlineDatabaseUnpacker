@@ -89,6 +89,8 @@
     <Compile Include="Resource\Implementation\AmbientCoefficients.cs" />
     <Compile Include="Resource\Implementation\AnimationController.cs" />
     <Compile Include="Resource\Implementation\AnimationProperties.cs" />
+    <Compile Include="Resource\Implementation\AnimationSettings.cs" />
+    <Compile Include="Resource\Implementation\AnimationsList.cs" />
     <Compile Include="Resource\Implementation\Blob.cs" />
     <Compile Include="Resource\Implementation\BoneTransform.cs" />
     <Compile Include="Resource\Implementation\CharacterVariation.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Resource\Implementation\KdTreePortalFragment.cs" />
     <Compile Include="Resource\Implementation\MaterialInstance.cs" />
     <Compile Include="Resource\Implementation\MaterialParams.cs" />
+    <Compile Include="Resource\Implementation\MobAnimations.cs" />
     <Compile Include="Resource\Implementation\ModelElement.cs" />
     <Compile Include="Resource\Implementation\ModelMorphPreset.cs" />
     <Compile Include="Resource\Implementation\ModelMorphSettings.cs" />
@@ -115,9 +118,11 @@
     <Compile Include="Resource\Implementation\OccluderInfo.cs" />
     <Compile Include="Resource\Implementation\ParticleAnimation.cs" />
     <Compile Include="Resource\Implementation\ParticleEmitter.cs" />
+    <Compile Include="Resource\Implementation\RandomSpellVisScript.cs" />
     <Compile Include="Resource\Implementation\SkeletalAnimation.cs" />
     <Compile Include="Resource\Implementation\SkeletonPart.cs" />
     <Compile Include="Resource\Implementation\Sound3D.cs" />
+    <Compile Include="Resource\Implementation\SpecialIdleParams.cs" />
     <Compile Include="Resource\Implementation\SpecialShuffleParams.cs" />
     <Compile Include="Resource\Implementation\TargetTrackingParams.cs" />
     <Compile Include="Resource\Implementation\Texture.cs" />
