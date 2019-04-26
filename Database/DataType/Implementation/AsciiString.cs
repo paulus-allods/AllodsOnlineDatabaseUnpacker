@@ -20,7 +20,7 @@ namespace Database.DataType.Implementation
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name, _value);
+            return _value == string.Empty ? new XElement(name) : new XElement(name, _value);
         }
 
         public override void Deserialize(IntPtr memoryAddress)
