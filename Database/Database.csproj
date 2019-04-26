@@ -64,6 +64,7 @@
     <Compile Include="DataType\Implementation\Bool.cs" />
     <Compile Include="DataType\Implementation\FileRef.cs" />
     <Compile Include="DataType\Implementation\Float.cs" />
+    <Compile Include="DataType\Implementation\GenericField.cs" />
     <Compile Include="DataType\Implementation\Int.cs" />
     <Compile Include="DataType\Implementation\Quaternion.cs" />
     <Compile Include="DataType\Implementation\TextFileRef.cs" />
