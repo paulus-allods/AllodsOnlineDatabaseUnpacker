@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace Database.DataType.Implementation
 {
-    public class GenericField<T> : DataType where T : Resource.Resource
+    public class GenericField<T> : DataType where T : Resource.Resource, new()
     {
         private string _className;
         private T _content;
@@ -20,11 +20,19 @@ namespace Database.DataType.Implementation
                 className.Deserialize(metaDataAddress + 16);
                 _className = className.ToString().Split('.').Last();
                 var type = Type.GetType($"Database.Resource.Implementation.{_className}");
-                if (type is null) throw new Exception("Type is null");
+                if (type is null)
+                {
+                    Logger.Warn($"Missing generic field {_className} for {typeof(T)} ");
+                    _content = new T();
+                }
+                else
+                {
+                    if (!typeof(T).IsAssignableFrom(type))
+                        throw new Exception($"Cannot assign {typeof(T)} from {type}");
+                    _content = Activator.CreateInstance(type) as T;
+                    if (_content is null) throw new Exception("Content is null");
+                }
 
-                if (!typeof(T).IsAssignableFrom(type)) throw new Exception($"Cannot assign {typeof(T)} from {type}");
-                _content = Activator.CreateInstance(type) as T;
-                if (_content is null) throw new Exception("Content is null");
                 _content.Deserialize(objectAddress);
             }
         }
