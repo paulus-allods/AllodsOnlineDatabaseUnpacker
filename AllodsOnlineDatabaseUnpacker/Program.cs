@@ -16,13 +16,19 @@ namespace AllodsOnlineDatabaseUnpacker
             EditorDatabase.Populate();
             GameDatabase.InitDataSystem(Paths.DataDir, "");
             GameDatabase.Populate(EditorDatabase.GetObjectList());
-            var ptr = GameDatabase.GetObjectPtr(
-                "Characters/Hadagan_female/Variations/HadaganFemaleVariations.(CharacterVariations).xdb");
-            Logger.Debug(ptr.ToString("x8"));
-            var ap = new CharacterVariations();
-            ap.Deserialize(ptr);
-            Console.ReadKey();
-            Logger.Info(ap.Serialize("test"));
+            string cmd;
+            while ((cmd = Console.ReadLine()) != "exit")
+            {
+                var ptr = GameDatabase.GetObjectPtr(cmd);
+                Logger.Debug(ptr.ToString("x8"));
+                if (cmd != null && cmd.Contains("(VisObjectTemplate)"))
+                {
+                    var result = new VisObjectTemplate();
+                    result.Deserialize(ptr);
+                    var output = result.Serialize("VisObjectTemplate");
+                    Console.WriteLine(output);
+                }
+            }
         }
     }
 }
