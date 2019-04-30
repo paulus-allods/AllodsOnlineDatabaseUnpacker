@@ -64,7 +64,9 @@ namespace Database
 
         public static string GetObjectName(IntPtr ptr)
         {
-            if (!Index.TryGetValue(ptr, out var result)) throw new Exception("Could not find object name");
+            if (ptr.ToInt32() == 0) return "";
+            if (!Index.TryGetValue(ptr, out var result))
+                throw new Exception($"Could not find object name {ptr.ToString("x8")}");
             return result;
         }
     }

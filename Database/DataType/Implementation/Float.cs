@@ -15,6 +15,11 @@ namespace Database.DataType.Implementation
             _value = BitConverter.ToSingle(buffer, 0);
         }
 
+        public static implicit operator float(Float x)
+        {
+            return x._value;
+        }
+
         public override XElement Serialize(string name)
         {
             return new XElement(name, _value);

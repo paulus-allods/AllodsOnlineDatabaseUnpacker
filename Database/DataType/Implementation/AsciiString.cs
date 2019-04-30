@@ -20,7 +20,7 @@ namespace Database.DataType.Implementation
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name, _value);
+            return _value == string.Empty ? new XElement(name) : new XElement(name, _value);
         }
 
         public override void Deserialize(IntPtr memoryAddress)
@@ -31,10 +31,15 @@ namespace Database.DataType.Implementation
             for (var localPtr = startAddress; localPtr != endAddress; localPtr += 1)
             {
                 var readByte = Marshal.ReadByte(localPtr);
-                sb.Append(Convert.ToChar(readByte));
+                if (readByte != 0) sb.Append(Convert.ToChar(readByte));
             }
 
             _value = sb.ToString();
+        }
+
+        public override string ToString()
+        {
+            return _value;
         }
     }
 }

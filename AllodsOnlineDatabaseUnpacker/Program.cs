@@ -1,5 +1,6 @@
 ﻿using System;
 using Database;
+using Database.Resource.Implementation;
 using NLog;
 
 namespace AllodsOnlineDatabaseUnpacker
@@ -15,7 +16,19 @@ namespace AllodsOnlineDatabaseUnpacker
             EditorDatabase.Populate();
             GameDatabase.InitDataSystem(Paths.DataDir, "");
             GameDatabase.Populate(EditorDatabase.GetObjectList());
-            Console.ReadKey();
+            string cmd;
+            while ((cmd = Console.ReadLine()) != "exit")
+            {
+                var ptr = GameDatabase.GetObjectPtr(cmd);
+                Logger.Debug(ptr.ToString("x8"));
+                if (cmd != null && cmd.Contains("(VisObjectTemplate)"))
+                {
+                    var result = new VisObjectTemplate();
+                    result.Deserialize(ptr);
+                    var output = result.Serialize("VisObjectTemplate");
+                    Console.WriteLine(output);
+                }
+            }
         }
     }
 }
