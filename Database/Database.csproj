@@ -142,6 +142,7 @@
     <Compile Include="Resource\Implementation\VisObjectTemplate.cs" />
     <Compile Include="Resource\Implementation\VisualMob.cs" />
     <Compile Include="Resource\Implementation\VisualMobExtension.cs" />
+    <Compile Include="Resource\Implementation\VisualMobTroopExtension.cs" />
     <Compile Include="Resource\Implementation\VisualObjectComponent.cs" />
     <Compile Include="Resource\Implementation\Widget.cs" />
     <Compile Include="Resource\Implementation\WidgetButton.cs" />
