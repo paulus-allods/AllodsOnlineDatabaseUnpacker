@@ -1,6 +1,6 @@
 namespace Database.Resource.Implementation
 {
-    public class UiSingleTexture : UiTextureItem
+    public class UISingleTexture : UITextureItem
     {
     }
 }

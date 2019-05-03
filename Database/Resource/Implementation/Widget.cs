@@ -38,7 +38,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(60)] [XdbElement] public FileRef PickMask;
 
         [MemoryOffset(116)] [XdbElement("Placement")]
-        public WidgetPlacementXy Placement;
+        public WidgetPlacementXY Placement;
 
         [MemoryOffset(112)] [XdbElement("Priority")]
         public Int Priority;

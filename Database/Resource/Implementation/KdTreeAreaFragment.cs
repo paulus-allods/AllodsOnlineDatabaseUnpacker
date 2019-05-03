@@ -4,7 +4,7 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class KdTreeAreaFragment : Resource
+    public class KDTreeAreaFragment : Resource
     {
         [MemoryOffset(68)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(64)] [XdbElement] public Int AreaId;

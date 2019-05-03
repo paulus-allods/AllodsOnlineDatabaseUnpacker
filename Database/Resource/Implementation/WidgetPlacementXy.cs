@@ -4,7 +4,7 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class WidgetPlacementXy : Resource
+    public class WidgetPlacementXY : Resource
     {
         [MemoryOffset(76)] [XdbElement("QuantumScale")]
         public Bool QuantumScale;

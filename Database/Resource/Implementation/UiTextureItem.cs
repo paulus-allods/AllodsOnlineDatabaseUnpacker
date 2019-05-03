@@ -4,7 +4,7 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class UiTextureItem : Resource
+    public class UITextureItem : Resource
     {
         [MemoryOffset(32)] [XdbElement] public FileRef SingleTexture;
 
