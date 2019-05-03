@@ -4,7 +4,7 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class TextureSingleElement
+    public class TextureSingleElement : Resource
     {
         [MemoryOffset(56)] [XdbElement] public FileRef Atlas;
         [MemoryOffset(52)] [XdbElement] public Int Crc;
