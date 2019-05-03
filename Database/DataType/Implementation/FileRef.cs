@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Database.DataType.Implementation
@@ -10,7 +11,20 @@ namespace Database.DataType.Implementation
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name, new XAttribute("href", GameDatabase.GetObjectName(_href)));
+            if (_href == IntPtr.Zero)
+            {
+                return new XElement(name, new XAttribute("href", ""));
+            }
+            var cursor = Marshal.ReadIntPtr(_href + 12);
+            var readByte = Marshal.ReadByte(cursor);
+            var sb = new StringBuilder();
+            while (readByte != 0)
+            {
+                sb.Append(Convert.ToChar(readByte));
+                cursor += 1;
+                readByte = Marshal.ReadByte(cursor);
+            }
+            return new XElement(name, new XAttribute("href", sb.ToString()));
         }
 
         public override void Deserialize(IntPtr memoryAddress)
