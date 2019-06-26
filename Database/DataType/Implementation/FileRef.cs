@@ -24,7 +24,10 @@ namespace Database.DataType.Implementation
                 cursor += 1;
                 readByte = Marshal.ReadByte(cursor);
             }
-            return new XElement(name, new XAttribute("href", sb.ToString()));
+
+            var fileName = sb.ToString();
+            var className = Utils.GetClassName(fileName);
+            return new XElement(name, new XAttribute("href", $"/{fileName}#xpointer(/{className})"));
         }
 
         public override void Deserialize(IntPtr memoryAddress)
