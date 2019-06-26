@@ -167,6 +167,7 @@
     <Compile Include="Serialization\XDB\XdbElementAttribute.cs" />
     <Compile Include="Serialization\XDB\XdbEnumArrayAttribute.cs" />
     <Compile Include="Serialization\XDB\XdbEnumAttribute.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Wrapper.cs" />
   </ItemGroup>
   <ItemGroup>
