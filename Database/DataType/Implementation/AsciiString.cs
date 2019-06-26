@@ -39,7 +39,7 @@ namespace Database.DataType.Implementation
 
         public override string ToString()
         {
-            return _value;
+            return Utils.NormalizePath(_value);
         }
     }
 }
