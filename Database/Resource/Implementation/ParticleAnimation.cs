@@ -21,7 +21,7 @@ namespace Database.Resource.Implementation
 
         [MemoryOffset(124)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(112)] [XdbElement] public Blob Animation;
-        [MemoryOffset(100)] [XdbElement] public AsciiString BinaryFile;
+        [MemoryOffset(100)] [XdbElement] public TextFileRef BinaryFile;
         [MemoryOffset(96)] [XdbElement] public Int EndFrame;
         [MemoryOffset(84)] [XdbElement] public VisibilityInterval Fade;
         [MemoryOffset(76)] [XdbElement] public Bool Looped;

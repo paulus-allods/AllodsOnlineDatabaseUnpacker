@@ -7,7 +7,7 @@ namespace Database.Resource.Implementation
     public class CollisionMesh : Resource
     {
         [MemoryOffset(72)] [XdbElement] public Aabb Aabb;
-        [MemoryOffset(60)] [XdbElement] public AsciiString BinaryFile;
+        [MemoryOffset(60)] [XdbElement] public TextFileRef BinaryFile;
 
         [MemoryOffset(56)] [XdbElement] public Int BinaryVersion;
 

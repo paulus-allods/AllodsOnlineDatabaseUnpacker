@@ -10,7 +10,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(112)] [XdbElement] public Aabb AabbLastFrame;
         [MemoryOffset(100)] [XdbElement] public Blob Animation; //TODO: Verify
         [MemoryArrayOffset(84, 24)] [XdbArray] public AnimationEvent[] AnimationEvents;
-        [MemoryOffset(72)] [XdbElement] public AsciiString BinaryFile;
+        [MemoryOffset(72)] [XdbElement] public TextFileRef BinaryFile;
         [MemoryOffset(68)] [XdbElement] public Int BinaryVersion;
 
         [MemoryOffset(64)] [XdbElement] public Float BlendTime;
