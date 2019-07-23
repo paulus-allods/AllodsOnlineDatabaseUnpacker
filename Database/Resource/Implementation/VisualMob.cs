@@ -26,7 +26,7 @@ namespace Database.Resource.Implementation
 
         [MemoryOffset(128)] [XdbElement] public Float Transparency;
 
-        //TODO: [MemoryOffset()] [XdbElement] public FileRef SfxArmorSet;
+        [MemoryOffset(148)] [XdbElement] public FileRef SfxArmorSet;
         [MemoryOffset(125)] [XdbElement] public Bool UseVisCharacterIntervalVisScripts;
         [MemoryOffset(124)] [XdbElement] public Bool UseVisualTweaks;
         [MemoryOffset(48)] [XdbElement] public CharacterVariation Variation;
