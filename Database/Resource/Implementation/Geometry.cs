@@ -9,10 +9,10 @@ namespace Database.Resource.Implementation
     {
         [MemoryOffset(368)] [XdbElement] public Aabb Aabb;
 
-        [MemoryArrayOffset(352, 92)] [XdbArray]
-        public KdTreeAreaFragment[] AreaFragments;
+        //TODO: FIX [MemoryArrayOffset(352, 92)] [XdbArray]
+        //public KDTreeAreaFragment[] AreaFragments;
 
-        [MemoryOffset(340)] [XdbElement] public AsciiString BinaryFile;
+        [MemoryOffset(340)] [XdbElement] public TextFileRef BinaryFile;
         [MemoryOffset(338)] [XdbElement] public Bool CastShadows;
         [MemoryOffset(337)] [XdbElement] public Bool DecalModel;
         [MemoryOffset(336)] [XdbElement] public Bool EnableDistanceFade;
@@ -30,7 +30,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(276)] [XdbElement] public Aabb GeometryBox;
 
         [MemoryArrayOffset(260, 40)] [XdbArray]
-        public KdTreeGeometryFragment[] GeometryFragments;
+        public KDTreeGeometryFragment[] GeometryFragments;
 
         [MemoryOffset(256)] [XdbElement("globalID")]
         public Int GlobalId;
@@ -61,7 +61,7 @@ namespace Database.Resource.Implementation
         public ModelPart[] Parts;
 
         [MemoryArrayOffset(124, 76)] [XdbArray]
-        public KdTreePortalFragment[] PortalFragments;
+        public KDTreePortalFragment[] PortalFragments;
 
         [MemoryOffset(220)] [XdbElement] public Bool PortalModel;
         [MemoryOffset(116)] [XdbElement] public Int RealSkeletonSize;
@@ -69,7 +69,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(104)] [XdbElement] public Float ScaleDistanceStart;
         [MemoryArrayOffset(88, 48)] [XdbArray] public NamedNode[] SceneNodes;
         [MemoryOffset(76)] [XdbElement] public Blob Skeleton;
-        [MemoryOffset(392)] [XdbElement] public FileRef SkeletonAnimation;
+        [MemoryOffset(392)] [XdbElement("SkeletalAnimation")] public FileRef SkeletalAnimation;
 
         [MemoryOffset(72)] [XdbEnum(typeof(SortMode))]
         public Int SortMode;
@@ -83,7 +83,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(61)] [XdbElement] public Bool UseProceduralEffect;
         [MemoryOffset(60)] [XdbElement] public Bool Vb32;
         [MemoryOffset(56)] [XdbElement] public Int Version;
-        [MemoryOffset(20)] [XdbElement] public Blob VertexBuffer;
+        [MemoryOffset(44)] [XdbElement] public Blob VertexBuffer;
         [MemoryArrayOffset(28, 92)] [XdbArray] public VertexDeclaration[] VertexDeclarations;
         [MemoryOffset(24)] [XdbElement] public Int VisualSkeletonSize;
     }

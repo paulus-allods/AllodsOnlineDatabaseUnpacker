@@ -12,7 +12,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(52)] [XdbElement] public Blob Blob;
 
         //TODO: [MemoryOffset()] [XdbElement] public AreaInfo AreaInfo;
-        [MemoryArrayOffset(36, 28)] [XdbArray] public Edge[] Edges;
+        //TODO: FIX [MemoryArrayOffset(36, 28)] [XdbArray] public Edge[] Edges;
         [MemoryOffset(24)] [XdbElement] public AsciiString Name;
         [MemoryArrayOffset(8, 4)] [XdbArray] public Int[] Portals;
         [MemoryOffset(4)] [XdbElement] public Bool UseOcclusionTest;
