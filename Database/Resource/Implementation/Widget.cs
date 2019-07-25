@@ -17,8 +17,6 @@ namespace Database.Resource.Implementation
         [MemoryOffset(212)] [XdbElement("IgnoreDblClick")] public Bool IgnoreDblClick;
         [MemoryOffset(200)] [XdbElement("Name")] public AsciiString Name;
         [MemoryOffset(196)] [XdbElement("PickChildrenOnly")] public Bool PickChildrenOnly;
-
-        //TODO: [MemoryOffset()] [XdbElement] public FileRef TextureMask;
         [MemoryOffset(60)] [XdbElement] public FileRef PickMask;
         [MemoryOffset(116)] [XdbElement("Placement")] public WidgetPlacementXY Placement;
         [MemoryOffset(112)] [XdbElement("Priority")] public Int Priority;
@@ -26,6 +24,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(40)] [XdbElement] public FileRef SoundHide;
         [MemoryOffset(32)] [XdbElement] public FileRef SoundShow;
         [MemoryOffset(108)] [XdbElement("TabOrder")] public Int TabOrder;
+        [MemoryOffset(24)] [XdbElement] public FileRef TextureMask;
         [MemoryOffset(105)] [XdbElement("TransparentInput")] public Bool TransparentInput;
         [MemoryOffset(104)] [XdbElement("Visible")] public Bool Visible;
 

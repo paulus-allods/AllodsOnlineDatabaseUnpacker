@@ -8,6 +8,7 @@ namespace Database.Resource.Implementation
     {
         [MemoryOffset(32)] [XdbElement] public FileRef SingleTexture;
         [MemoryOffset(24)] [XdbElement] public FileRef TextureElement;
-        //TODO: [MemoryOffset()] [XdbElement] public Int PermanentCache;
+        
+        [MemoryOffset(40)] [XdbElement] public Int PermanentCache;
     }
 }
