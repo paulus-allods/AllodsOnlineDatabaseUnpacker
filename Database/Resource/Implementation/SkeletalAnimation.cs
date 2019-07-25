@@ -8,7 +8,7 @@ namespace Database.Resource.Implementation
     {
         [MemoryOffset(136)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(112)] [XdbElement] public Aabb AabbLastFrame;
-        [MemoryOffset(100)] [XdbElement] public Blob Animation; //TODO: Verify
+        [MemoryOffset(100)] [XdbElement] public Blob Animation;
         [MemoryArrayOffset(84, 24)] [XdbArray] public AnimationEvent[] AnimationEvents;
         [MemoryOffset(72)] [XdbElement] public TextFileRef BinaryFile;
         [MemoryOffset(68)] [XdbElement] public Int BinaryVersion;
@@ -20,7 +20,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(36)] [XdbElement] public AsciiString ScriptName;
         [MemoryOffset(32)] [XdbElement("sourceFileCRC")] public Int SourceFileCrc;
         [MemoryOffset(28)] [XdbElement] public Float Speed;
-        [MemoryOffset(24)] [XdbElement] public Int StartFrame; //TODO: Verify
+        [MemoryOffset(24)] [XdbElement] public Int StartFrame;
 
         public class AnimationEvent : Resource
         {
