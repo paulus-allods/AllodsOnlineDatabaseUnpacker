@@ -21,7 +21,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(112)] [XdbElement] public SpecialShuffleParams SpecialShuffleParams;
         [MemoryOffset(96)] [XdbElement] public AsciiString SpineBoneName;
         [MemoryOffset(92)] [XdbElement] public Float SwimHeight;
-        [MemoryOffset(40)] [XdbElement] public TargetTrackingParams TargetTrackingParams;
+        [MemoryOffset(36)] [XdbElement] public TargetTrackingParams TargetTrackingParams;
         [MemoryOffset(28)] [XdbElement] public Float Walk;
         [MemoryOffset(24)] [XdbElement] public Float WalkBackwards;
     }
