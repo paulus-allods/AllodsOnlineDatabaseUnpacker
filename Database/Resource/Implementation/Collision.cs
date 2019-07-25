@@ -9,11 +9,7 @@ namespace Database.Resource.Implementation
     {
         [MemoryOffset(44)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(32)] [XdbElement] public FileRef CollisionMesh;
-
-        [MemoryOffset(28)] [XdbElement("sourceFileCRC")]
-        public Int SourceFileCrc;
-
-        [MemoryOffset(24)] [XdbEnum(typeof(CollisionVolume))]
-        public Int Volume;
+        [MemoryOffset(28)] [XdbElement("sourceFileCRC")] public Int SourceFileCrc;
+        [MemoryOffset(24)] [XdbEnum(typeof(CollisionVolume))] public Int Volume;
     }
 }

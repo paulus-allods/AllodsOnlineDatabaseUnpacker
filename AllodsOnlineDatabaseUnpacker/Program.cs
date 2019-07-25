@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using Database;
 using Database.Resource.Implementation;
 using NLog;
@@ -23,7 +21,6 @@ namespace AllodsOnlineDatabaseUnpacker
                 GameDatabase.Populate(objectList);
                 string cmd;
                 while ((cmd = Console.ReadLine()) != "exit")
-                {
                     try
                     {
                         var ptr = GameDatabase.GetObjectPtr(cmd);
@@ -40,11 +37,10 @@ namespace AllodsOnlineDatabaseUnpacker
                     {
                         Logger.Error(e.Message);
                     }
-                }
             }
             else
             {
-                var unpacker = new Unpacker(true,"export");
+                var unpacker = new Unpacker(true, "export");
                 unpacker.Run();
             }
         }

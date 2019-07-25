@@ -9,14 +9,10 @@ namespace Database.Resource.Implementation
     {
         [MemoryOffset(162)] [XdbElement] public Bool CanWalkBackwards;
         [MemoryOffset(161)] [XdbElement] public Bool FinishMoveAnimation;
-
         [MemoryOffset(160)] [XdbElement] public Bool GroundNormalByBoundingBox;
         [MemoryOffset(148)] [XdbElement] public AsciiString HeadBoneName;
         [MemoryOffset(144)] [XdbElement] public Float HeadTurnTime;
-
-        [MemoryOffset(140)] [XdbEnum(typeof(CreatureKind))]
-        public Int Kind;
-
+        [MemoryOffset(140)] [XdbEnum(typeof(CreatureKind))] public Int Kind;
         [MemoryOffset(136)] [XdbElement] public Float LegAlignTime;
         [MemoryOffset(132)] [XdbElement] public Float LegRunTurnTime;
         [MemoryOffset(128)] [XdbElement] public Float MaxHeadAngle;

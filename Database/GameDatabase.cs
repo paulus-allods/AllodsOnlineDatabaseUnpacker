@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Database.DataType.Implementation;
 using NLog;
 
 namespace Database
@@ -10,7 +8,6 @@ namespace Database
     public static class GameDatabase
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-
         private static readonly Dictionary<IntPtr, string> Index;
         private static readonly Dictionary<string, IntPtr> ReversedIndex;
         private static readonly List<string> MissingFiles;
@@ -54,15 +51,14 @@ namespace Database
             }
 
             var missing = MissingFiles.Count;
-            Logger.Info("Game database populated with {0} files, {1} files are missing", fileNames.Length - missing,
-                missing);
+            Logger.Info("Game database populated with {0} files, {1} files are missing", fileNames.Length - missing, missing);
         }
 
         public static bool DoesFileExists(string filename)
         {
             return ReversedIndex.ContainsKey(filename);
         }
-        
+
         public static IntPtr GetObjectPtr(string filename)
         {
             if (!ReversedIndex.TryGetValue(filename, out var result))
@@ -78,7 +74,8 @@ namespace Database
                 Logger.Error($"Could not find object name {ptr.ToString("x8")}");
                 return "";
             }
-                //throw new Exception($"Could not find object name {ptr.ToString("x8")}");
+
+            //throw new Exception($"Could not find object name {ptr.ToString("x8")}");
             return result;
         }
 

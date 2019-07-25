@@ -8,8 +8,6 @@ namespace Database.Resource.Implementation
     public class VertexComponent : Resource
     {
         [MemoryOffset(8)] [XdbElement] public Int Offset;
-
-        [MemoryOffset(4)] [XdbEnum(typeof(VertexElementType))]
-        public Int Type;
+        [MemoryOffset(4)] [XdbEnum(typeof(VertexElementType))] public Int Type;
     }
 }

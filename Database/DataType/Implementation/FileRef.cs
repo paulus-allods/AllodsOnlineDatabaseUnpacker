@@ -11,10 +11,7 @@ namespace Database.DataType.Implementation
 
         public override XElement Serialize(string name)
         {
-            if (_href == IntPtr.Zero)
-            {
-                return new XElement(name, new XAttribute("href", ""));
-            }
+            if (_href == IntPtr.Zero) return new XElement(name, new XAttribute("href", ""));
             var cursor = Marshal.ReadIntPtr(_href + 12);
             var readByte = Marshal.ReadByte(cursor);
             var sb = new StringBuilder();

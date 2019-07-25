@@ -8,7 +8,6 @@ namespace Database.Resource.Implementation
     {
         [MemoryOffset(68)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(64)] [XdbElement] public Int AreaId;
-
         [MemoryOffset(52)] [XdbElement] public Blob Blob;
 
         //TODO: [MemoryOffset()] [XdbElement] public AreaInfo AreaInfo;

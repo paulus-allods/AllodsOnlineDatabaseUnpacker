@@ -12,8 +12,8 @@ namespace Database.Resource.Implementation
         [MemoryOffset(48)] [XdbElement] public Int FacialColor;
         [MemoryOffset(44)] [XdbElement] public Int HairColor;
         [MemoryOffset(36)] [XdbElement] public FileRef HairGeoset;
+        [MemoryOffset(12)] [XdbElement] public ModelMorphPreset MorphPreset;
         [MemoryOffset(4)] [XdbElement] public FileRef Skin;
         [MemoryOffset(0)] [XdbElement] public Int SkinColor;
-        [MemoryOffset(12)] [XdbElement] public ModelMorphPreset MorphPreset;
     }
 }

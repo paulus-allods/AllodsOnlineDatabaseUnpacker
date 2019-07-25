@@ -7,7 +7,6 @@ namespace Database.Resource.Implementation
     public class UITextureItem : Resource
     {
         [MemoryOffset(32)] [XdbElement] public FileRef SingleTexture;
-
         [MemoryOffset(24)] [XdbElement] public FileRef TextureElement;
         //TODO: [MemoryOffset()] [XdbElement] public Int PermanentCache;
     }

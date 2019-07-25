@@ -12,10 +12,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(20)] [XdbElement] public AsciiString Name;
         [MemoryOffset(16)] [XdbElement] public Int SkinIndex;
         [MemoryOffset(12)] [XdbElement] public Int VertexBufferOffset;
-
-        [MemoryOffset(8)] [XdbElement("vertexDeclarationID")]
-        public Int VertexDeclarationId;
-
+        [MemoryOffset(8)] [XdbElement("vertexDeclarationID")] public Int VertexDeclarationId;
         [MemoryOffset(4)] [XdbElement] public Float VirtualOffset;
     }
 }

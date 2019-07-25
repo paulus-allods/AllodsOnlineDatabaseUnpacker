@@ -7,9 +7,7 @@ namespace Database.Resource.Implementation
 {
     public class TargetTrackingParams : Resource
     {
-        [MemoryArrayOffset(36, 4)] [XdbEnumArray(typeof(Animation))]
-        public Int[] AddedToUseAnimations;
-
+        [MemoryArrayOffset(36, 4)] [XdbEnumArray(typeof(Animation))] public Int[] AddedToUseAnimations;
         [MemoryOffset(32)] [XdbElement] public Int HorizontalRotate;
         [MemoryOffset(0)] [XdbElement] public Bool IgnoreRotateToTarget;
         [MemoryOffset(24)] [XdbElement] public Float MaxHeadAngleToDown;
