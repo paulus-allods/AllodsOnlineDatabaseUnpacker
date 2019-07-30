@@ -8,9 +8,7 @@ namespace Database.Resource.Implementation
     public class Geometry : Resource
     {
         [MemoryOffset(368)] [XdbElement] public Aabb Aabb;
-
-        //TODO: FIX [MemoryArrayOffset(352, 92)] [XdbArray]
-        //public KDTreeAreaFragment[] AreaFragments;
+        [MemoryArrayOffset(352, 96)] [XdbArray] public KDTreeAreaFragment[] AreaFragments;
         [MemoryOffset(340)] [XdbElement] public TextFileRef BinaryFile;
         [MemoryOffset(338)] [XdbElement] public Bool CastShadows;
         [MemoryOffset(337)] [XdbElement] public Bool DecalModel;
@@ -19,8 +17,6 @@ namespace Database.Resource.Implementation
         [MemoryOffset(328)] [XdbElement] public Bool ExportDefaultAnimation;
         [MemoryOffset(324)] [XdbElement] public Float FadeDistanceEnd;
         [MemoryOffset(320)] [XdbElement] public Float FadeDistanceStart;
-
-        //TODO: [MemoryOffset(112)] [XdbElement] public MaterialParams RootMaterial;
         [MemoryArrayOffset(304, 20)] [XdbArray] public FlareInfo[] FlareInfos;
         [MemoryOffset(300)] [XdbElement] public Float FogFactor;
         [MemoryOffset(276)] [XdbElement] public Aabb GeometryBox;
@@ -30,7 +26,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(240)] [XdbElement] public Blob IndexBuffer;
         [MemoryArrayOffset(224, 20)] [XdbArray] public NamedJoint[] Joints;
         [MemoryOffset(120)] [XdbElement] public Bool LargeModel;
-        [MemoryArrayOffset(204, 4)] [XdbArray] public Float[] LodDistances; //TODO: Verify
+        [MemoryArrayOffset(204, 4)] [XdbArray] public Float[] LodDistances;
         [MemoryOffset(200)] [XdbElement] public Float LodFactor;
         [MemoryOffset(196)] [XdbElement] public Bool LodModel;
         [MemoryArrayOffset(180, 112)] [XdbArray] public ModelElement[] ModelElements;
@@ -41,6 +37,7 @@ namespace Database.Resource.Implementation
         [MemoryArrayOffset(124, 76)] [XdbArray] public KDTreePortalFragment[] PortalFragments;
         [MemoryOffset(220)] [XdbElement] public Bool PortalModel;
         [MemoryOffset(116)] [XdbElement] public Int RealSkeletonSize;
+        [MemoryOffset(112)] [XdbElement] public GenericField<MaterialParams> RootMaterial;
         [MemoryOffset(108)] [XdbElement] public Float ScaleDistanceEnd;
         [MemoryOffset(104)] [XdbElement] public Float ScaleDistanceStart;
         [MemoryArrayOffset(88, 48)] [XdbArray] public NamedNode[] SceneNodes;

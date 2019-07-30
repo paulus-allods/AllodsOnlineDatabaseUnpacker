@@ -13,14 +13,13 @@ namespace Database.Resource.Implementation
         [MemoryOffset(204)] [XdbElement("ReactionOnPointing")] public AsciiString ReactionOnPointing;
         [MemoryOffset(200)] [XdbElement("ReactionOnUp")] public Bool ReactionOnUp;
         [MemoryOffset(188)] [XdbElement("ReactionRightClick")] public AsciiString ReactionRightClick;
+        [MemoryOffset(12)] [XdbElement] public FileRef SoundOver;
+        [MemoryOffset(4)] [XdbElement] public FileRef SoundPress;
         [MemoryOffset(156)] [XdbElement("StateDisabled")] public WidgetButtonState StateDisabled;
         [MemoryOffset(128)] [XdbElement("StateHighlighted")] public WidgetButtonState StateHighlighted;
         [MemoryOffset(100)] [XdbElement("StateNormal")] public WidgetButtonState StateNormal;
         [MemoryOffset(72)] [XdbElement("StatePushed")] public WidgetButtonState StatePushed;
         [MemoryOffset(44)] [XdbElement("StatePushedHighlighted")] public WidgetButtonState StatePushedHighlighted;
         [MemoryOffset(32)] [XdbElement("TextFileRef")] public TextFileRef TextFileRef;
-
-        //TODO: [MemoryOffset()] [XdbElement] public FileRef SoundOver;
-        //TODO: [MemoryOffset()] [XdbElement] public FileRef SoundPress;
     }
 }
