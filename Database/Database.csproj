@@ -108,6 +108,7 @@
     <Compile Include="Resource\Implementation\KDTreeGeometryFragment.cs" />
     <Compile Include="Resource\Implementation\KDTreePortalFragment.cs" />
     <Compile Include="Resource\Implementation\MaterialInstance.cs" />
+    <Compile Include="Resource\Implementation\CommonMaterialParams.cs" />
     <Compile Include="Resource\Implementation\MaterialParams.cs" />
     <Compile Include="Resource\Implementation\MobAnimations.cs" />
     <Compile Include="Resource\Implementation\ModelElement.cs" />

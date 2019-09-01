@@ -21,22 +21,17 @@ namespace AllodsOnlineDatabaseUnpacker
                 GameDatabase.Populate(objectList);
                 string cmd;
                 while ((cmd = Console.ReadLine()) != "exit")
-                    try
+                {
+                    var ptr = GameDatabase.GetObjectPtr(cmd);
+                    Logger.Info(ptr.ToString("x8"));
+                    if (cmd != null && cmd.Contains("(CollisionMesh)"))
                     {
-                        var ptr = GameDatabase.GetObjectPtr(cmd);
-                        Logger.Info(ptr.ToString("x8"));
-                        if (cmd != null && cmd.Contains("(Visual3Mob)"))
-                        {
-                            var result = new VisualMob();
-                            result.Deserialize(ptr);
-                            var output = result.Serialize("VisObjectTemplate");
-                            Console.WriteLine(output);
-                        }
+                        var result = new CollisionMesh();
+                        result.Deserialize(ptr);
+                        var output = result.Serialize("CollisionMesh");
+                        Console.WriteLine(output);
                     }
-                    catch (Exception e)
-                    {
-                        Logger.Error(e.Message);
-                    }
+                }
             }
             else
             {

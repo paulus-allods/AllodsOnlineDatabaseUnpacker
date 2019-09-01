@@ -32,7 +32,14 @@ namespace AllodsOnlineDatabaseUnpacker
             GameDatabase.Populate(objectList);
             var missingList = GameDatabase.GetMissingFiles();
             File.WriteAllLines("missingFiles.txt", missingList);
+            #if DEBUG
+            foreach (var obj in objectList) 
+            {
+                BuildObject(obj);
+            }
+            #else
             Parallel.ForEach(objectList, BuildObject);
+            #endif
         }
 
         private void BuildObject(string filePath)
