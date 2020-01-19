@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Database;
 using Database.Resource.Implementation;
 using NLog;
@@ -33,10 +34,16 @@ namespace AllodsOnlineDatabaseUnpacker
                     }
                 }
             }
+            else if (args.Length > 1 && args[0] == "--list")
+            {
+                var unpacker = new Unpacker(true, "export");
+                var objectList = File.ReadAllLines(args[1]);
+                unpacker.Run(objectList);
+            }
             else
             {
                 var unpacker = new Unpacker(true, "export");
-                unpacker.Run();
+                unpacker.Run(null);
             }
         }
     }

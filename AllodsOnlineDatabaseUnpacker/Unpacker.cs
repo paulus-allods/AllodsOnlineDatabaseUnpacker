@@ -21,14 +21,17 @@ namespace AllodsOnlineDatabaseUnpacker
             _exportFolder = exportFolder;
         }
 
-        public void Run()
+        public void Run(string[] objectList)
         {
             Logger.Info("Starting unpacker");
-            EditorDatabase.InitDataSystem(Paths.DataDir, "");
-            EditorDatabase.Populate();
+            if (objectList is null)
+            {
+                EditorDatabase.InitDataSystem(Paths.DataDir, "");
+                EditorDatabase.Populate();
+                objectList = EditorDatabase.GetObjectList();
+                File.WriteAllLines("EditorDatabase.txt", objectList);
+            }
             GameDatabase.InitDataSystem(Paths.DataDir, "");
-            var objectList = EditorDatabase.GetObjectList();
-            File.WriteAllLines("EditorDatabase.txt", objectList);
             GameDatabase.Populate(objectList);
             var missingList = GameDatabase.GetMissingFiles();
             File.WriteAllLines("missingFiles.txt", missingList);
