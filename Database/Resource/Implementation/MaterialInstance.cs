@@ -11,7 +11,7 @@ namespace Database.Resource.Implementation
         [MemoryOffset(40)] [XdbElement] public FileRef DiffuseTexture;
         [MemoryOffset(36)] [XdbElement] public GenericField<MaterialParams> Params;
         [MemoryOffset(33)] [XdbElement] public Bool ScrollAlpha;
-        [MemoryOffset(32)] [XdbElement] public Bool ScrollRgb;
+        [MemoryOffset(32)] [XdbElement("ScrollRGB")] public Bool ScrollRgb;
         [MemoryOffset(24)] [XdbElement] public FileRef TransparencyTexture;
         [MemoryOffset(20)] [XdbElement] public Bool Transparent;
         [MemoryOffset(12)] [XdbElement] public Bool UseFog;
