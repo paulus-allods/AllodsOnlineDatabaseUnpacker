@@ -14,9 +14,7 @@ namespace Database.DataType.Implementation
             _value = value;
         }
 
-        public AsciiString()
-        {
-        }
+        public AsciiString() { }
 
         public override XElement Serialize(string name)
         {
@@ -39,7 +37,7 @@ namespace Database.DataType.Implementation
 
         public override string ToString()
         {
-            return _value;
+            return Utils.NormalizePath(_value);
         }
     }
 }

@@ -34,17 +34,15 @@
     <Prefer32bit>true</Prefer32bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=2018.3.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
-      <HintPath>..\packages\JetBrains.Annotations.2018.3.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="JetBrains.Annotations, Version=2019.1.3.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2019.1.3\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
-    <Reference Include="libdb_cs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\AllodsOnlineDatabaseUnpacker\bin\Debug\libdb_cs.dll</HintPath>
+    <Reference Include="libdb_cs">
+      <HintPath>..\packages\libdb_cs.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
-      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -104,10 +102,11 @@
     <Compile Include="Resource\Implementation\FlareInfo.cs" />
     <Compile Include="Resource\Implementation\Geometry.cs" />
     <Compile Include="Resource\Implementation\GeometryFragment.cs" />
-    <Compile Include="Resource\Implementation\KdTreeAreaFragment.cs" />
-    <Compile Include="Resource\Implementation\KdTreeGeometryFragment.cs" />
-    <Compile Include="Resource\Implementation\KdTreePortalFragment.cs" />
+    <Compile Include="Resource\Implementation\KDTreeAreaFragment.cs" />
+    <Compile Include="Resource\Implementation\KDTreeGeometryFragment.cs" />
+    <Compile Include="Resource\Implementation\KDTreePortalFragment.cs" />
     <Compile Include="Resource\Implementation\MaterialInstance.cs" />
+    <Compile Include="Resource\Implementation\CommonMaterialParams.cs" />
     <Compile Include="Resource\Implementation\MaterialParams.cs" />
     <Compile Include="Resource\Implementation\MobAnimations.cs" />
     <Compile Include="Resource\Implementation\ModelElement.cs" />
@@ -131,10 +130,10 @@
     <Compile Include="Resource\Implementation\TexturePatch.cs" />
     <Compile Include="Resource\Implementation\TextureRect.cs" />
     <Compile Include="Resource\Implementation\TextureSingleElement.cs" />
-    <Compile Include="Resource\Implementation\UiSingleTexture.cs" />
-    <Compile Include="Resource\Implementation\UiTexture.cs" />
-    <Compile Include="Resource\Implementation\UiTextureElement.cs" />
-    <Compile Include="Resource\Implementation\UiTextureItem.cs" />
+    <Compile Include="Resource\Implementation\UISingleTexture.cs" />
+    <Compile Include="Resource\Implementation\UITexture.cs" />
+    <Compile Include="Resource\Implementation\UITextureElement.cs" />
+    <Compile Include="Resource\Implementation\UITextureItem.cs" />
     <Compile Include="Resource\Implementation\VertexComponent.cs" />
     <Compile Include="Resource\Implementation\VertexDeclaration.cs" />
     <Compile Include="Resource\Implementation\VisAction.cs" />
@@ -153,7 +152,7 @@
     <Compile Include="Resource\Implementation\WidgetLayerTiledTexture.cs" />
     <Compile Include="Resource\Implementation\WidgetPanel.cs" />
     <Compile Include="Resource\Implementation\WidgetPlacement.cs" />
-    <Compile Include="Resource\Implementation\WidgetPlacementXy.cs" />
+    <Compile Include="Resource\Implementation\WidgetPlacementXY.cs" />
     <Compile Include="Resource\Implementation\WidgetTextStyle.cs" />
     <Compile Include="Resource\Implementation\WidgetTextTaggedValue.cs" />
     <Compile Include="Resource\Implementation\WidgetTextureTiledLayout.cs" />
@@ -167,14 +166,13 @@
     <Compile Include="Serialization\XDB\XdbElementAttribute.cs" />
     <Compile Include="Serialization\XDB\XdbEnumArrayAttribute.cs" />
     <Compile Include="Serialization\XDB\XdbEnumAttribute.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Wrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Serialization" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

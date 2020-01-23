@@ -8,10 +8,8 @@ namespace Database
     public static class EditorDatabase
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-
         private static IntPtr _databasePtr;
         private static HandleRef _databaseHandle;
-
         private static string[] _objectList;
 
         public static void InitDataSystem(string dataPath, string localizationExtension)

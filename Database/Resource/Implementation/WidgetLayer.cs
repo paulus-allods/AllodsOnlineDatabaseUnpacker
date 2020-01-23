@@ -7,17 +7,10 @@ namespace Database.Resource.Implementation
 {
     public class WidgetLayer : Resource
     {
-        [MemoryOffset(32)] [XdbEnum(typeof(BlendEffectType), "BlendEffect")]
-        public Int BlendEffect;
-
-        [MemoryOffset(28)] [XdbElement("Color")]
-        public Int Color;
-
-        [MemoryOffset(24)] [XdbElement] public Bool FlatPlacement;
-
-        [MemoryOffset(25)] [XdbElement("Grayed")]
-        public Bool Grayed;
-
-        //TODO: [MemoryOffset()] [XdbElement] public Bool LazyLoad;
+        [MemoryOffset(32)] [XdbEnum(typeof(BlendEffectType), "BlendEffect")] public Int BlendEffect;
+        [MemoryOffset(28)] [XdbElement("Color")] public Int Color;
+        [MemoryOffset(25)] [XdbElement] public Bool FlatPlacement;
+        [MemoryOffset(26)] [XdbElement("Grayed")] public Bool Grayed;
+        [MemoryOffset(24)] [XdbElement] public Bool LazyLoad;
     }
 }

@@ -1,6 +1,4 @@
 namespace Database.Resource.Implementation
 {
-    public class WidgetPanel : Widget
-    {
-    }
+    public class WidgetPanel : Widget { }
 }

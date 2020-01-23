@@ -22,8 +22,7 @@ namespace Database.Serialization.XDB
             fieldName = char.ToLowerInvariant(fieldName[0]) + fieldName.Substring(1);
             var enumValue = Enum.GetName(_enumType, (int) intValue);
             var asciiString = new AsciiString(enumValue);
-            Logger.Debug(
-                $"Enum value for {fieldName} of {obj.GetType()}: {enumValue} (Type:{_enumType},Ordinal:{(int) intValue}");
+            Logger.Debug($"Enum value for {fieldName} of {obj.GetType()}: {enumValue} (Type:{_enumType},Ordinal:{(int) intValue}");
             return asciiString.Serialize(Name ?? fieldName);
         }
     }

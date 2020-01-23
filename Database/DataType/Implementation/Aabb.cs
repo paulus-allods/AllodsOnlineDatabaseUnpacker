@@ -16,9 +16,7 @@ namespace Database.DataType.Implementation
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name,
-                _center.Serialize("center"),
-                _extents.Serialize("extents"));
+            return new XElement(name, _center.Serialize("center"), _extents.Serialize("extents"));
         }
 
         public override void Deserialize(IntPtr memoryAddress)

@@ -4,9 +4,9 @@ using Database.Serialization.XDB;
 
 namespace Database.Resource.Implementation
 {
-    public class KdTreeGeometryFragment : Resource
+    public class KDTreeGeometryFragment : Resource
     {
-        [MemoryOffset(12)] [XdbElement] public Aabb Aabb;
+        [MemoryOffset(16)] [XdbElement] public Aabb Aabb;
         [MemoryOffset(4)] [XdbElement] public Blob Blob;
     }
 }

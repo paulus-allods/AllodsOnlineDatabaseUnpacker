@@ -6,9 +6,7 @@ namespace Database.Resource.Implementation
 {
     public class WidgetTextStyle : Resource
     {
-        [MemoryOffset(16)] [XdbEnum(typeof(AlignY), "Align")]
-        public Int Align;
-
+        [MemoryOffset(16)] [XdbEnum(typeof(AlignY), "Align")] public Int Align;
         [MemoryOffset(12)] [XdbElement] public Bool Ellipsis;
         [MemoryOffset(8)] [XdbElement] public Float LineSpacing;
         [MemoryOffset(7)] [XdbElement] public Bool Multiline;

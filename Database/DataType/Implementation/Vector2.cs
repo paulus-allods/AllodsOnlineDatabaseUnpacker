@@ -22,9 +22,7 @@ namespace Database.DataType.Implementation
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name,
-                new XAttribute("x", (float) _x),
-                new XAttribute("y", (float) _y));
+            return new XElement(name, new XAttribute("x", (float) _x), new XAttribute("y", (float) _y));
         }
     }
 }

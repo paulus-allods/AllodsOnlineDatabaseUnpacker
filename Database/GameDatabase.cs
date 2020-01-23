@@ -8,9 +8,9 @@ namespace Database
     public static class GameDatabase
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-
         private static readonly Dictionary<IntPtr, string> Index;
         private static readonly Dictionary<string, IntPtr> ReversedIndex;
+        private static readonly List<string> MissingFiles;
         private static IntPtr _databasePtr;
         private static HandleRef _databaseHandle;
 
@@ -18,6 +18,7 @@ namespace Database
         {
             Index = new Dictionary<IntPtr, string>();
             ReversedIndex = new Dictionary<string, IntPtr>();
+            MissingFiles = new List<string>();
         }
 
         public static void InitDataSystem(string dataPath, string localizationExtension)
@@ -33,14 +34,12 @@ namespace Database
         public static void Populate(string[] fileNames)
         {
             Logger.Info("Start populating game database with {0} files", fileNames.Length);
-            var missing = 0;
             foreach (var file in fileNames)
             {
                 var dbid = Wrapper.GetDBIDByName(_databaseHandle, file);
                 if (!Wrapper.DoesObjectExist(_databasePtr, dbid))
                 {
-                    //Logger.Warn("Object {0} does not exist in game database", file);
-                    missing++;
+                    MissingFiles.Add(file);
                 }
                 else
                 {
@@ -51,8 +50,13 @@ namespace Database
                 }
             }
 
-            Logger.Info("Game database populated with {0} files, {1} files are missing", fileNames.Length - missing,
-                missing);
+            var missing = MissingFiles.Count;
+            Logger.Info("Game database populated with {0} files, {1} files are missing", fileNames.Length - missing, missing);
+        }
+
+        public static bool DoesFileExists(string filename)
+        {
+            return ReversedIndex.ContainsKey(filename);
         }
 
         public static IntPtr GetObjectPtr(string filename)
@@ -66,8 +70,18 @@ namespace Database
         {
             if (ptr.ToInt32() == 0) return "";
             if (!Index.TryGetValue(ptr, out var result))
-                throw new Exception($"Could not find object name {ptr.ToString("x8")}");
+            {
+                Logger.Error($"Could not find object name {ptr.ToString("x8")}");
+                return "";
+            }
+
+            //throw new Exception($"Could not find object name {ptr.ToString("x8")}");
             return result;
+        }
+
+        public static string[] GetMissingFiles()
+        {
+            return MissingFiles.ToArray();
         }
     }
 }

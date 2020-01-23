@@ -16,15 +16,10 @@ namespace Database.Resource.Implementation
             [MemoryOffset(28)] [XdbElement] public Int Width;
             [MemoryOffset(24)] [XdbElement] public Int X;
             [MemoryOffset(20)] [XdbElement] public Float XCoeffA;
-
-            [MemoryOffset(16)] [XdbElement("xCoeffRGB")]
-            public Float XCoeffRgb;
-
+            [MemoryOffset(16)] [XdbElement("xCoeffRGB")] public Float XCoeffRgb;
             [MemoryOffset(12)] [XdbElement] public Int Y;
             [MemoryOffset(8)] [XdbElement] public Float YCoeffA;
-
-            [MemoryOffset(4)] [XdbElement("yCoeffRGB")]
-            public Float YCoeffRgb;
+            [MemoryOffset(4)] [XdbElement("yCoeffRGB")] public Float YCoeffRgb;
         }
     }
 }
