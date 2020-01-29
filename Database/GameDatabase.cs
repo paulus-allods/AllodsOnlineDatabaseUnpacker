@@ -11,8 +11,8 @@ namespace Database
         private static readonly Dictionary<IntPtr, string> Index;
         private static readonly Dictionary<string, IntPtr> ReversedIndex;
         private static readonly List<string> MissingFiles;
-        private static IntPtr _databasePtr;
-        private static HandleRef _databaseHandle;
+        private static IntPtr databasePtr;
+        private static HandleRef databaseHandle;
 
         static GameDatabase()
         {
@@ -27,8 +27,8 @@ namespace Database
                 Logger.Info("Game database successfully loaded from {0}", dataPath);
             else
                 throw new Exception($"Could not load game database from {dataPath}");
-            _databasePtr = Wrapper.GetMainDatabase();
-            _databaseHandle = new HandleRef(new object(), _databasePtr);
+            databasePtr = Wrapper.GetMainDatabase();
+            databaseHandle = new HandleRef(new object(), databasePtr);
         }
 
         public static void Populate(string[] fileNames)
@@ -36,14 +36,14 @@ namespace Database
             Logger.Info("Start populating game database with {0} files", fileNames.Length);
             foreach (var file in fileNames)
             {
-                var dbid = Wrapper.GetDBIDByName(_databaseHandle, file);
-                if (!Wrapper.DoesObjectExist(_databasePtr, dbid))
+                var dbid = Wrapper.GetDBIDByName(databaseHandle, file);
+                if (!Wrapper.DoesObjectExist(databasePtr, dbid))
                 {
                     MissingFiles.Add(file);
                 }
                 else
                 {
-                    var ptr = Wrapper.GetObject(_databasePtr, dbid);
+                    var ptr = Wrapper.GetObject(databasePtr, dbid);
                     Index.Add(ptr, file);
                     ReversedIndex.Add(file, ptr);
                     //Logger.Debug("Object {0} added to database", file);

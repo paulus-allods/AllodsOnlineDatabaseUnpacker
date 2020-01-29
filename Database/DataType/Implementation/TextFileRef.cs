@@ -1,25 +1,27 @@
 using System;
 using System.Xml.Linq;
+using JetBrains.Annotations;
 
 namespace Database.DataType.Implementation
 {
+    [UsedImplicitly]
     public class TextFileRef : DataType
     {
-        private readonly AsciiString _href;
+        private readonly AsciiString href;
 
         public TextFileRef()
         {
-            _href = new AsciiString();
+            href = new AsciiString();
         }
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name, new XAttribute("href", _href));
+            return new XElement(name, new XAttribute("href", href));
         }
 
         public override void Deserialize(IntPtr memoryAddress)
         {
-            _href.Deserialize(memoryAddress);
+            href.Deserialize(memoryAddress);
         }
     }
 }

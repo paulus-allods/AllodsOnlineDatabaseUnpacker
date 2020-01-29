@@ -1,9 +1,8 @@
-using JetBrains.Annotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Database.Resource.Enum
 {
-    // ReSharper disable InconsistentNaming
-    [UsedImplicitly]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum Animation
     {
         idle,

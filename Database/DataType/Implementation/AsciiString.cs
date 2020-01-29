@@ -2,23 +2,25 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml.Linq;
+using JetBrains.Annotations;
 
 namespace Database.DataType.Implementation
 {
+    [UsedImplicitly]
     public class AsciiString : DataType
     {
-        private string _value;
+        private string value;
 
         public AsciiString(string value)
         {
-            _value = value;
+            this.value = value;
         }
 
         public AsciiString() { }
 
         public override XElement Serialize(string name)
         {
-            return _value == string.Empty ? new XElement(name) : new XElement(name, _value);
+            return value == string.Empty ? new XElement(name) : new XElement(name, value);
         }
 
         public override void Deserialize(IntPtr memoryAddress)
@@ -32,12 +34,12 @@ namespace Database.DataType.Implementation
                 if (readByte != 0) sb.Append(Convert.ToChar(readByte));
             }
 
-            _value = sb.ToString();
+            value = sb.ToString();
         }
 
         public override string ToString()
         {
-            return Utils.NormalizePath(_value);
+            return Utils.NormalizePath(value);
         }
     }
 }

@@ -1,34 +1,36 @@
 using System;
 using System.Xml.Linq;
+using JetBrains.Annotations;
 
 namespace Database.DataType.Implementation
 {
+    [UsedImplicitly]
     public class Quaternion : DataType
     {
-        private readonly Float _w;
-        private readonly Float _x;
-        private readonly Float _y;
-        private readonly Float _z;
+        private readonly Float w;
+        private readonly Float x;
+        private readonly Float y;
+        private readonly Float z;
 
         public Quaternion()
         {
-            _x = new Float();
-            _y = new Float();
-            _z = new Float();
-            _w = new Float();
+            x = new Float();
+            y = new Float();
+            z = new Float();
+            w = new Float();
         }
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name, new XAttribute("x", (float) _x), new XAttribute("y", (float) _y), new XAttribute("z", (float) _z), new XAttribute("w", (float) _w));
+            return new XElement(name, new XAttribute("x", (float) x), new XAttribute("y", (float) y), new XAttribute("z", (float) z), new XAttribute("w", (float) w));
         }
 
         public override void Deserialize(IntPtr memoryAddress)
         {
-            _x.Deserialize(memoryAddress);
-            _y.Deserialize(memoryAddress + 4);
-            _z.Deserialize(memoryAddress + 8);
-            _w.Deserialize(memoryAddress + 12);
+            x.Deserialize(memoryAddress);
+            y.Deserialize(memoryAddress + 4);
+            z.Deserialize(memoryAddress + 8);
+            w.Deserialize(memoryAddress + 12);
         }
     }
 }
