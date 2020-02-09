@@ -15,9 +15,9 @@ namespace Database
         public static void InitDataSystem(string dataPath, string localizationExtension)
         {
             if (Wrapper.InitEditorDataSystem(dataPath, localizationExtension, true, ""))
-                Logger.Info("Editor database successfully loaded from {0}", dataPath);
+                Logger.Info("Editor data system successfully loaded from {0}", dataPath);
             else
-                throw new Exception($"Could not load game database from {dataPath}");
+                throw new Exception($"Could not load editor data system from {dataPath}");
             databasePtr = Wrapper.GetMainDatabase_static();
             databaseHandle = new HandleRef(databasePtr, databasePtr);
         }

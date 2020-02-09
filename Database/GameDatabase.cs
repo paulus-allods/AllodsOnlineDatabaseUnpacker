@@ -24,9 +24,9 @@ namespace Database
         public static void InitDataSystem(string dataPath, string localizationExtension)
         {
             if (Wrapper.InitGameDataSystem(dataPath, localizationExtension, false, false, true, false))
-                Logger.Info("Game database successfully loaded from {0}", dataPath);
+                Logger.Info("Game data system loaded from {0}", dataPath);
             else
-                throw new Exception($"Could not load game database from {dataPath}");
+                throw new Exception($"Could not load game data system from {dataPath}");
             databasePtr = Wrapper.GetMainDatabase();
             databaseHandle = new HandleRef(new object(), databasePtr);
         }
