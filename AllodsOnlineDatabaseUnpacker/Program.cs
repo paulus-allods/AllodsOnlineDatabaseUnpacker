@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using Database;
 using Database.Resource.Implementation;
+using Microsoft.Extensions.CommandLineUtils;
 using NLog;
 
 namespace AllodsOnlineDatabaseUnpacker
@@ -12,38 +14,85 @@ namespace AllodsOnlineDatabaseUnpacker
 
         public static void Main(string[] args)
         {
-            Logger.Info("Starting unpacker");
-            if (args.Length > 0 && args[0] == "--dev")
+            var app = new CommandLineApplication();
+            app.Name = "AlldosDatabaseUnpacker.exe";
+            app.Description = "Allods pack.bin database unpacker";
+
+            app.HelpOption("-?|-h|--help");
+
+            var dataDirArgument = app.Argument("data", "Allods data directory (default: data)");
+            var exportFolderOption = app.Option("-f|--folder", "Export folder (default: export)", CommandOptionType.SingleValue);
+            var devModeOption = app.Option("-d|--dev", "Enable dev mode for memory exploration (default: false)", CommandOptionType.NoValue);
+            var testModeOption = app.Option("-t|--test", "Run unpacker without exporting files (default: false)", CommandOptionType.NoValue);
+            var indexModeOption = app.Option("-i|--index", "Export editor index to file", CommandOptionType.SingleValue);
+            var missingExportModeOption = app.Option("-m|--missing", "Export missing files list to file", CommandOptionType.SingleValue);
+
+            app.OnExecute(() =>
             {
-                EditorDatabase.InitDataSystem(Paths.DataDir, "");
+                var exportFolder = exportFolderOption.HasValue() ? exportFolderOption.Value() : "export";
+                var devMode = devModeOption.HasValue();
+                var testMode = testModeOption.HasValue();
+                var dataDir = dataDirArgument.Value ?? "data";
+                var indexFile = indexModeOption.HasValue() ? indexModeOption.Value() : null;
+                var missingFilesFile = missingExportModeOption.HasValue() ? missingExportModeOption.Value() : null;
+
+                Logger.Info("Initializing editor data system");
+                EditorDatabase.InitDataSystem(dataDir, "");
                 EditorDatabase.Populate();
-                GameDatabase.InitDataSystem(Paths.DataDir, "");
+
+                Logger.Info("Initializing game data system");
+                GameDatabase.InitDataSystem(dataDir, "");
+
                 var objectList = EditorDatabase.GetObjectList();
-                GameDatabase.Populate(objectList);
-                string cmd;
-                while ((cmd = Console.ReadLine()) != "exit")
+
+                if (!(indexFile is null))
                 {
-                    var ptr = GameDatabase.GetObjectPtr(cmd);
-                    Logger.Info(ptr.ToString("x8"));
-                    if (cmd != null && cmd.Contains("(CollisionMesh)"))
+                    File.WriteAllLines(indexFile, objectList);
+                }
+
+                if (devMode)
+                {
+                    string cmd;
+                    while ((cmd = Console.ReadLine()) != "exit")
                     {
-                        var result = new CollisionMesh();
-                        result.Deserialize(ptr);
-                        var output = result.Serialize("CollisionMesh");
-                        Console.WriteLine(output);
+                        try
+                        {
+                            var ptr = GameDatabase.GetObjectPtr(cmd);
+                            Logger.Info(ptr.ToString("x8"));
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.Message);
+                        }
                     }
                 }
-            }
-            else if (args.Length > 1 && args[0] == "--list")
+                else
+                {
+                    var unpacker = new Unpacker(testMode, exportFolder);
+                    unpacker.Run(objectList);
+                    if (!(missingFilesFile is null))
+                    {
+                        var missingList = GameDatabase.GetMissingFiles();
+                        File.WriteAllLines(missingFilesFile, missingList);
+                    }
+                }
+
+                return 0;
+            });
+
+            try
             {
-                var unpacker = new Unpacker(true, "export");
-                var objectList = File.ReadAllLines(args[1]);
-                unpacker.Run(objectList);
+                app.Execute(args);
             }
-            else
+            catch (Exception e)
             {
-                var unpacker = new Unpacker(true, "export");
-                unpacker.Run(null);
+                Logger.Error(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Program finished, press any key to exit ...");
+                Console.ReadKey();
+                Environment.Exit(0);
             }
         }
     }
