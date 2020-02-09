@@ -7,11 +7,11 @@ namespace Database.Serialization.XDB
 {
     public class XdbEnumAttribute : XdbElementAttribute
     {
-        private readonly Type _enumType;
+        private readonly Type enumType;
 
         public XdbEnumAttribute(Type enumType, string name = null) : base(name)
         {
-            _enumType = enumType;
+            this.enumType = enumType;
         }
 
         public override XElement SerializeField(FieldInfo field, object obj)
@@ -20,7 +20,9 @@ namespace Database.Serialization.XDB
                 throw new Exception("Cannot cast non int to enum");
             var fieldName = field.Name;
             fieldName = char.ToLowerInvariant(fieldName[0]) + fieldName.Substring(1);
-            var asciiString = new AsciiString(Enum.GetName(_enumType, (int) intValue));
+            var enumValue = Enum.GetName(enumType, (int) intValue);
+            var asciiString = new AsciiString(enumValue);
+            Logger.Debug($"Enum value for {fieldName} of {obj.GetType()}: {enumValue} (Type:{enumType},Ordinal:{(int) intValue}");
             return asciiString.Serialize(Name ?? fieldName);
         }
     }

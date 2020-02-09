@@ -1,16 +1,18 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
+using JetBrains.Annotations;
 
 namespace Database.DataType.Implementation
 {
+    [UsedImplicitly]
     public class Bool : DataType
     {
-        private bool _value;
+        private bool value;
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name, _value);
+            return new XElement(name, value);
         }
 
         public override void Deserialize(IntPtr memoryAddress)
@@ -19,10 +21,10 @@ namespace Database.DataType.Implementation
             switch (result)
             {
                 case 0:
-                    _value = false;
+                    value = false;
                     break;
                 case 1:
-                    _value = true;
+                    value = true;
                     break;
                 default:
                     throw new Exception($"Cannot cast {result} to bool");

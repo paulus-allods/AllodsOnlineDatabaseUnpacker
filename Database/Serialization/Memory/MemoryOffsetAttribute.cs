@@ -18,7 +18,7 @@ namespace Database.Serialization.Memory
 
         public virtual void DeserializeField([NotNull] FieldInfo field, IntPtr memoryAddress, object obj)
         {
-            Logger.Debug($"Deserializing {field.Name} at {memoryAddress.ToString("x8")}");
+            Logger.Debug($"Deserializing {field.Name} at {(memoryAddress + Offset).ToString("x8")}");
             if (typeof(IMemoryDeserializable).IsAssignableFrom(field.FieldType))
             {
                 var fieldValue = (IMemoryDeserializable) Activator.CreateInstance(field.FieldType);

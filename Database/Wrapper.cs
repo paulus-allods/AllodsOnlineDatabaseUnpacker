@@ -15,8 +15,8 @@ namespace Database
 
         [DllImport("Main")]
         public static extern bool InitEditorDataSystem([MarshalAs(UnmanagedType.LPUTF8Str)] string dataPath,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string localizationExtension, [MarshalAs(UnmanagedType.I1)] bool noRcs,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string rcsConfigFile);
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string localizationExtension,
+            [MarshalAs(UnmanagedType.I1)] bool noRcs, [MarshalAs(UnmanagedType.LPUTF8Str)] string rcsConfigFile);
 
         [DllImport("libdb", EntryPoint = "?GetMainDatabase@NDb@@YAPAVCBasicDatabase@1@XZ",
             CallingConvention = CallingConvention.Cdecl)]

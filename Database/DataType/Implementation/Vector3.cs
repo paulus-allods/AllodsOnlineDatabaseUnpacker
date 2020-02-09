@@ -1,34 +1,33 @@
 using System;
 using System.Xml.Linq;
+using JetBrains.Annotations;
 
 namespace Database.DataType.Implementation
 {
+    [UsedImplicitly]
     public class Vector3 : DataType
     {
-        private readonly Float _x;
-        private readonly Float _y;
-        private readonly Float _z;
+        private readonly Float x;
+        private readonly Float y;
+        private readonly Float z;
 
         public Vector3()
         {
-            _x = new Float();
-            _y = new Float();
-            _z = new Float();
+            x = new Float();
+            y = new Float();
+            z = new Float();
         }
 
         public override XElement Serialize(string name)
         {
-            return new XElement(name,
-                new XAttribute("x", _x),
-                new XAttribute("y", _y),
-                new XAttribute("z", _z));
+            return new XElement(name, new XAttribute("x", (float) x), new XAttribute("y", (float) y), new XAttribute("z", (float) z));
         }
 
         public override void Deserialize(IntPtr memoryAddress)
         {
-            _x.Deserialize(memoryAddress);
-            _y.Deserialize(memoryAddress + 4);
-            _z.Deserialize(memoryAddress + 8);
+            x.Deserialize(memoryAddress);
+            y.Deserialize(memoryAddress + 4);
+            z.Deserialize(memoryAddress + 8);
         }
     }
 }
