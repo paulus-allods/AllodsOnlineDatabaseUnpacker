@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using NLog;
 
@@ -8,17 +9,19 @@ namespace Database
     public static class GameDatabase
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private static readonly Dictionary<IntPtr, string> Index;
+
         private static readonly Dictionary<string, IntPtr> ReversedIndex;
         private static readonly List<string> MissingFiles;
+        private static HashSet<string> NotIndexedDependencies;
+
         private static IntPtr databasePtr;
         private static HandleRef databaseHandle;
 
         static GameDatabase()
         {
-            Index = new Dictionary<IntPtr, string>();
             ReversedIndex = new Dictionary<string, IntPtr>();
             MissingFiles = new List<string>();
+            NotIndexedDependencies = new HashSet<string>();
         }
 
         public static void InitDataSystem(string dataPath, string localizationExtension)
@@ -44,9 +47,8 @@ namespace Database
                 else
                 {
                     var ptr = Wrapper.GetObject(databasePtr, dbid);
-                    Index.Add(ptr, file);
                     ReversedIndex.Add(file, ptr);
-                    //Logger.Debug("Object {0} added to database", file);
+                    Logger.Debug("Object {0} added to database", file);
                 }
             }
 
@@ -66,17 +68,32 @@ namespace Database
             return result;
         }
 
-        public static string GetObjectName(IntPtr ptr)
+        public static void AddNotIndexedDependency(string filename)
         {
-            if (ptr.ToInt32() == 0) return "";
-            if (!Index.TryGetValue(ptr, out var result))
+            if (!NotIndexedDependencies.Contains(filename))
             {
-                Logger.Error($"Could not find object name {ptr.ToString("x8")}");
-                return "";
+                NotIndexedDependencies.Add(filename);
             }
+        }
 
-            //throw new Exception($"Could not find object name {ptr.ToString("x8")}");
-            return result;
+        public static string[] GetNotIndexedDependencies()
+        {
+            return NotIndexedDependencies.ToArray();
+        }
+
+        public static void ResetNotIndexedDependencies()
+        {
+            NotIndexedDependencies.Clear();
+        }
+
+        public static string[] GetMissingFiles()
+        {
+            return MissingFiles.ToArray();
+        }
+
+        public static void ResetMissingFiles()
+        {
+            MissingFiles.Clear();
         }
 
         public static string[] GetMissingFiles()

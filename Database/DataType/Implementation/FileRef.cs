@@ -26,7 +26,12 @@ namespace Database.DataType.Implementation
 
             var fileName = sb.ToString();
             var className = Utils.GetClassName(fileName);
-            if (!GameDatabase.DoesFileExists(fileName)) Logger.Warn($"{fileName} is refenced but not extracted");
+            
+            if (!GameDatabase.DoesFileExists(fileName))
+            {
+                Logger.Warn($"{fileName} is not indexed, it will be processed in next batch");
+                GameDatabase.AddNotIndexedDependency(fileName);
+            }
 
             return new XElement(name, new XAttribute("href", $"/{fileName}#xpointer(/{className})"));
         }
