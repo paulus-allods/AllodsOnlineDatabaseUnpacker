@@ -71,6 +71,7 @@ namespace AllodsOnlineDatabaseUnpacker
                 {
                     var unpacker = new Unpacker(testMode, exportFolder);
                     objectList = filesList.HasValue() ? File.ReadAllLines(filesList.Value()) : objectList;
+
                     unpacker.Run(objectList);
                     if (!(missingFilesFile is null))
                     {

@@ -9,9 +9,11 @@ namespace Database
     public static class GameDatabase
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         private static readonly Dictionary<string, IntPtr> ReversedIndex;
         private static readonly List<string> MissingFiles;
         private static HashSet<string> NotIndexedDependencies;
+
         private static IntPtr databasePtr;
         private static HandleRef databaseHandle;
 
@@ -92,6 +94,11 @@ namespace Database
         public static void ResetMissingFiles()
         {
             MissingFiles.Clear();
+        }
+
+        public static string[] GetMissingFiles()
+        {
+            return MissingFiles.ToArray();
         }
     }
 }
