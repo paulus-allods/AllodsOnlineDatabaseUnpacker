@@ -6,7 +6,7 @@ using Database;
 using Database.Resource;
 using NLog;
 
-#if !DEBUG
+#if DEBUG
 using System.Threading.Tasks;
 #endif
 
@@ -26,33 +26,59 @@ namespace AllodsOnlineDatabaseUnpacker
 
         public void Run(string[] objectList)
         {
-            Logger.Info("Starting unpacker");
+            Logger.Info($"Starting unpacker with {objectList.Length} files");
             GameDatabase.Populate(objectList);
-            #if DEBUG
+#if !DEBUG
             foreach (var obj in objectList) BuildObject(obj);
-            #else
+#else
             Parallel.ForEach(objectList, BuildObject);
-            #endif
+#endif
+            var notIndexedDependencies = GameDatabase.GetNotIndexedDependencies();
+            if (notIndexedDependencies.Length > 0)
+            {
+                GameDatabase.ResetNotIndexedDependencies();
+                // GameDatabase.ResetMissingFiles();
+                Run(notIndexedDependencies);
+            }
         }
 
         private void BuildObject(string filePath)
         {
-            if (!GameDatabase.DoesFileExists(filePath)) return;
+            if (!GameDatabase.DoesFileExists(filePath))
+            {
+                return; // Some files are indexed but not present in pack.bin, just skipping them
+            }
             var className = Utils.GetClassName(filePath);
             var type = Type.GetType($"Database.Resource.Implementation.{className}, Database");
-            if (type is null) return;
-            if (!(Activator.CreateInstance(type) is Resource obj)) throw new Exception($"Obj is null for {filePath}");
-            obj.Deserialize(GameDatabase.GetObjectPtr(filePath));
-            if (!testMode)
+            if (type is null)
             {
-                var directoryName = Path.GetDirectoryName(filePath);
-                if (directoryName is null) throw new Exception($"Directory name is null for path {filePath}");
-                directoryName = Path.Combine(exportFolder, directoryName);
-                if (!Directory.Exists(directoryName)) Directory.CreateDirectory(directoryName);
-                using (var writer = new XmlTextWriter(Path.Combine(exportFolder, filePath), new UTF8Encoding(false)))
+                return; // Some types are not extracted because they are not implemented in the unpacker
+            }
+            if (!(Activator.CreateInstance(type) is Resource obj))
+            {
+                throw new Exception($"Obj is null for {filePath}");
+            }
+            obj.Deserialize(GameDatabase.GetObjectPtr(filePath));
+            var directoryName = Path.GetDirectoryName(filePath);
+            if (directoryName is null)
+            {
+                throw new Exception($"Directory name is null for path {filePath}");
+            }
+            directoryName = Path.Combine(exportFolder, directoryName);
+            if (!Directory.Exists(directoryName))
+            {
+                Directory.CreateDirectory(directoryName);
+            }
+            using (var writer = new XmlTextWriter(Path.Combine(exportFolder, filePath), new UTF8Encoding(false)))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.Indentation = 4;
+                if (testMode)
                 {
-                    writer.Formatting = Formatting.Indented;
-                    writer.Indentation = 4;
+                    obj.Serialize(className);
+                }
+                else
+                {
                     obj.Serialize(className).Save(writer);
                 }
             }
