@@ -26,6 +26,7 @@ namespace AllodsOnlineDatabaseUnpacker
             var testModeOption = app.Option("-t|--test", "Run unpacker without exporting files (default: false)", CommandOptionType.NoValue);
             var indexModeOption = app.Option("-i|--index", "Export editor index to file", CommandOptionType.SingleValue);
             var missingExportModeOption = app.Option("-m|--missing", "Export missing files list to file", CommandOptionType.SingleValue);
+            var filesList = app.Option("-l|--list", "Files list to extract", CommandOptionType.SingleValue);
 
             app.OnExecute(() =>
             {
@@ -69,6 +70,7 @@ namespace AllodsOnlineDatabaseUnpacker
                 else
                 {
                     var unpacker = new Unpacker(testMode, exportFolder);
+                    objectList = filesList.HasValue() ? File.ReadAllLines(filesList.Value()) : objectList;
                     unpacker.Run(objectList);
                     if (!(missingFilesFile is null))
                     {
