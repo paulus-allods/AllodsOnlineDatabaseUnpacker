@@ -30,7 +30,7 @@ namespace AllodsOnlineDatabaseUnpacker
             GameDatabase.Populate(objectList);
 #if !DEBUG
             foreach (var obj in objectList) BuildObject(obj);
-#else
+            #else
             Parallel.ForEach(objectList, BuildObject);
 #endif
             var notIndexedDependencies = GameDatabase.GetNotIndexedDependencies();
@@ -59,6 +59,7 @@ namespace AllodsOnlineDatabaseUnpacker
                 throw new Exception($"Obj is null for {filePath}");
             }
             obj.Deserialize(GameDatabase.GetObjectPtr(filePath));
+
             var directoryName = Path.GetDirectoryName(filePath);
             if (directoryName is null)
             {
@@ -79,6 +80,8 @@ namespace AllodsOnlineDatabaseUnpacker
                 }
                 else
                 {
+                    writer.Formatting = Formatting.Indented;
+                    writer.Indentation = 4;
                     obj.Serialize(className).Save(writer);
                 }
             }
